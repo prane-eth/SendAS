@@ -44,12 +44,11 @@ function insert_details(string $filename, string $datetime, string $key, object 
   $result = mysqli_query($conn, $sql);
 
   // Check for the database creation success
-  if($result){
-      echo "The values are inserted into tablle successfully <br>";
+  if(!$result){
+    echo "The insertion of the values failed because of this error ---> ". mysqli_error($conn);
+    return false;
   }
-  else{
-      echo "The insertion of the values failed because of this error ---> ". mysqli_error($conn);
-  }
+  return true;
 }
 
 // Function to check for duplicate key
@@ -73,10 +72,7 @@ if($uploadOk != 0){
   $conn = mysqli_connect($servername, $username, $password, $database);
 
   if (!$conn){
-      die("Sorry we failed to connect: ". mysqli_connect_error());
-  }
-  else{
-      echo "Connection was successful<br>";
+    die("Sorry we failed to connect: ". mysqli_connect_error());
   }
 
   $filename = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
@@ -85,6 +81,10 @@ if($uploadOk != 0){
   $key = random_str(6);
   }while(!checkKey($key, $conn));
 
-  insert_details($filename, $datetime, $key, $conn);
+  if(insert_details($filename, $datetime, $key, $conn)){
+    echo "<br>Your Key for the file: ".$key;
+  }
 }
+echo '<br><a href="index.html">Go back</a>';
 ?>
+

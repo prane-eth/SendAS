@@ -12,9 +12,6 @@ $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn){
     die("Sorry we failed to connect: ". mysqli_connect_error());
 }
-else{
-    echo "Connection was successful<br>";
-}
 
 $sql="SELECT file_name FROM file_details where key_file='$key'";
 $result = mysqli_query($conn, $sql);
@@ -26,7 +23,6 @@ else{
     $row=mysqli_fetch_assoc($result);
     $file_url = "uploads/".$row["file_name"];
     if(file_exists($file_url)) {
-        echo "file exists!";
         header('Content-Type: application/octet-stream');
         header("Content-Transfer-Encoding: Binary"); 
         header("Content-disposition: attachment; filename=\"" . basename($file_url) . "\""); 
