@@ -9,11 +9,20 @@
     <link rel="stylesheet" href="style.css">
 <body>
   <h1>File Encryption</h1>
-  <div class="container-fluid box">    
+  <div class="container-fluid box">
     <form action="upload.php" method="post" enctype="multipart/form-data">
+      <h2>Upload: </h2>
       <label for="fileToUpload">Select file to upload:</label> 
       <input type="file" name="fileToUpload" id="fileToUpload">
       <input type="submit" value="Upload" name="submit">
+    </form>
+  </div>
+  <div class="container-fluid box">
+    <form action="download.php" method="post">
+      <h2>Download: </h2>
+      <label for="keyFile">Enter the key for the file: </label> 
+      <input type="text" name="keyFile" id="keyFile" required=true><br>
+      <input type="submit" value="Download" name="submit">
     </form>
   </div>
 </body>
