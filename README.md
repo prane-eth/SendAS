@@ -17,4 +17,3 @@ To access database, use command
 ```
 mysql -h mysql-29500-0.cloudclusters.net -P 29500 -u root -ptesttest --database=project_db
 ```
-test12345678910
