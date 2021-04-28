@@ -34,4 +34,5 @@ else{
 	    die();
     }
 }
+echo '<br><a href="index.html">Go back</a>';
 ?>
