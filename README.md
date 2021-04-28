@@ -10,3 +10,10 @@ File is encrypted after upload, and decrypted before download.
 
 Deployed to 
 [https://cseproj.herokuapp.com/](https://cseproj.herokuapp.com/)
+
+
+To access database, use command
+
+```
+mysql -h mysql-29500-0.cloudclusters.net -P 29500 -u root -ptesttest --database=project_db
+```
