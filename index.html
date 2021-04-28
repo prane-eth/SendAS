@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>File encryptor</title>
+    <meta charset="utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+<body>
+  <h1>File Encryption</h1>
+  <div class="container-fluid box">    
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+      <label for="fileToUpload">Select file to upload:</label> 
+      <input type="file" name="fileToUpload" id="fileToUpload">
+      <input type="submit" value="Upload" name="submit">
+    </form>
+  </div>
+</body>
+</html>
