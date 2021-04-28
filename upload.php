@@ -1,21 +1,32 @@
 <?php
+
+//Including the encryted php
+include 'file_encryptor.php';
+
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+$key = "770A8A65DA156D24EE2A093277530142";
+
 
 // Check if file already exists
 if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
     $uploadOk = 0;
   } 
+
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, a file with same already exists.";
   // if everything is ok, try to upload file
   } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      //Encrypting file and decrypting it.
+      encryptFile($target_file,$key);
+      //deleting plain file
+      unlink($target_file);
       echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+
     } else {
       echo "Sorry, there was an error uploading your file.";
       $uploadOk =0;
@@ -65,9 +76,9 @@ function checkKey(string $key, object $conn){
 if($uploadOk != 0){
   // Connecting to the Database
   $servername = "mysql-29500-0.cloudclusters.net:29500/";
-  $username = "root";
-  $password = "testtest";
-  $database="project_db";
+$username = "root";
+$password = "testtest";
+$database="project_db";
 
   $conn = mysqli_connect($servername, $username, $password, $database);
 

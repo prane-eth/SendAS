@@ -68,7 +68,7 @@ function decryptFile($filename, $key)   {
 }
 
 
-$key = "770A8A65DA156D24EE2A093277530142";
+//$key = "770A8A65DA156D24EE2A093277530142";
 
 // to test, uncomment any of these
 //encryptFile("testing_file.pdf", $key);
