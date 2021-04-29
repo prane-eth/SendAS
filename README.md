@@ -11,7 +11,7 @@ File gets expired in 24 hours if not downloaded.
 
 
 Deployed to 
-[this link](https://cseproj.herokuapp.com/)
+[this link](http://cyberproj.totalh.net/)
 
 
 To access database, use command
