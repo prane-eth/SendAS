@@ -18,7 +18,7 @@ else    {
     $row=mysqli_fetch_assoc($result);
     $inserted_time = $row["file_name"];
     if ($inserted_time - time() > 86400) {  // more than 24 hours
-        unlink($file_url); // delete file
+        unlink($file_url);
         echo 'File expired';
         header('Location: expired.php');
     }
