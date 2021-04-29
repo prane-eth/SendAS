@@ -1,5 +1,5 @@
 # CyberSec_Project
-This contains my Cybersecurity project
+This contains the Cybersecurity project
 
 The user uploads a file. It generates a download code along with a download link.
 
@@ -7,9 +7,11 @@ User shares the code or link with a friend who will download the uploaded file.
 
 File is encrypted after upload, and decrypted before download.
 
+File gets expired in 24 hours if not downloaded.
+
 
 Deployed to 
-[https://cseproj.herokuapp.com/](https://cseproj.herokuapp.com/)
+[this link](https://cseproj.herokuapp.com/)
 
 
 To access database, use command

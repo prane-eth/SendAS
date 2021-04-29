@@ -78,7 +78,7 @@ if($uploadOk != 0){
   include 'db_connect.php';
 
   $filename = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
-  $datetime = date("Y-m-d H:i:s");
+  $datetime = time();
   do{
   $key = random_str(6);
   }while(!checkKey($key, $conn));

@@ -6,13 +6,22 @@ include 'db_connect.php';
 
 $key = $_POST["keyFile"];
 
-$sql="SELECT file_name FROM file_details where key_file='$key'";
+$sql="SELECT * FROM file_details where key_file='$key'";
 $result = mysqli_query($conn, $sql);
-$num=mysqli_num_rows($result);
+$num = mysqli_num_rows($result);
 if($num==0 || $num>1)   {
     echo "Key does not exist.";
 }
 else    {
+
+    // Check expiry
+    $inserted_time = $row["file_name"];
+    if ($inserted_time - time() > 86400) {  // more than 24 hours
+        unlink($file_url);
+        echo 'File expired';
+        header('Location: expired.php');
+    }
+
     $row=mysqli_fetch_assoc($result);
     $file_url = "uploads/".$row["file_name"];
     if(file_exists($file_url . ".enc")) {
@@ -34,7 +43,7 @@ else    {
         $result = mysqli_query($conn, $sql);
         if(!$result){
             echo "Deletion in the database is unsuccessful ---> ". mysqli_error($conn);
-          }
+        }
         die();
     }
     else{
