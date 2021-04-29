@@ -17,7 +17,7 @@ else    {
     // Check expiry
     $inserted_time = $row["file_name"];
     if ($inserted_time - time() > 86400) {  // more than 24 hours
-        unlink($file_url);
+        unlink($file_url); // delete file
         echo 'File expired';
         header('Location: expired.php');
     }
