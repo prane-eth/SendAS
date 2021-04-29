@@ -17,4 +17,4 @@ To access database, use command
 ```
 mysql -h mysql-29585-0.cloudclusters.net -P 29585 -u root -ptesttest --database=project_db
 ```
-[https://phpmyadmin-c006.cloudclusters.net/index.php] (PhpMyAdmin link)
+[https://phpmyadmin-c006.cloudclusters.net/index.php](PhpMyAdmin link)
