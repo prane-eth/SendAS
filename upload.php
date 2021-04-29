@@ -2,12 +2,11 @@
 
 //Including the encryted php
 include 'file_encryptor.php';
+include 'db_connect.php';
 
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$key = "770A8A65DA156D24EE2A093277530142";
-
 
 // Check if file already exists
 if (file_exists($target_file)) {
@@ -74,8 +73,6 @@ function checkKey(string $key, object $conn){
 
 // Update database if the file was uploaded successfully
 if($uploadOk != 0){
-
-  include 'db_connect.php';
 
   $filename = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
   $datetime = time();
