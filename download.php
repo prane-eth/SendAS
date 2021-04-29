@@ -16,14 +16,14 @@ else    {
 
     // Check expiry
     $row=mysqli_fetch_assoc($result);
-    $inserted_time = $row["file_name"];
+    $file_url = "uploads/".$row["file_name"];
+    $inserted_time = $row["inserted_time"];
     if ($inserted_time - time() > 86400) {  // more than 24 hours
         unlink($file_url);
         echo 'File expired';
         header('Location: expired.php');
     }
 
-    $file_url = "uploads/".$row["file_name"];
     if(file_exists($file_url . ".enc")) {
         //Decrypting file
         decryptFile($file_url, $dKey);
