@@ -13,25 +13,25 @@ $key = "770A8A65DA156D24EE2A093277530142";
 if (file_exists($target_file)) {
     echo "Sorry, file already exists.";
     $uploadOk = 0;
-  } 
+}
 
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, a file with same already exists.";
   // if everything is ok, try to upload file
-  } else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-      //Encrypting file and decrypting it.
-      encryptFile($target_file,$key);
-      //deleting plain file
-      unlink($target_file);
-      echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+} else {
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+    //Encrypting file and decrypting it.
+    encryptFile($target_file,$dKey);
+    //deleting plain file
+    unlink($target_file);
+    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
 
-    } else {
-      echo "Sorry, there was an error uploading your file.";
-      $uploadOk =0;
-    }
+  } else {
+    echo "Sorry, there was an error uploading your file.";
+    $uploadOk =0;
   }
+}
 echo "<br>";
 // Random key generator
 function random_str(
@@ -39,7 +39,7 @@ function random_str(
   string $keyspace = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
 ): string {
   if ($length < 1) {
-      throw new \RangeException("Length must be a positive integer");
+      throw new RangeException("Length must be a positive integer");
   }
   $pieces = [];
   $max = mb_strlen($keyspace, '8bit') - 1;
@@ -68,23 +68,14 @@ function checkKey(string $key, object $conn){
   $result = mysqli_query($conn, $sql);
   $num=mysqli_num_rows($result);
   if($num>=1)
-  return false;
+    return false;
   return true;
 }
 
 // Update database if the file was uploaded successfully
 if($uploadOk != 0){
-  // Connecting to the Database
-  $servername = "mysql-29500-0.cloudclusters.net:29500/";
-$username = "root";
-$password = "testtest";
-$database="project_db";
 
-  $conn = mysqli_connect($servername, $username, $password, $database);
-
-  if (!$conn){
-    die("Sorry we failed to connect: ". mysqli_connect_error());
-  }
+  include 'db_connect.php';
 
   $filename = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
   $datetime = date("Y-m-d H:i:s");

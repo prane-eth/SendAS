@@ -2,29 +2,17 @@
 
 //Including the encryted php
 include 'file_encryptor.php';
+include 'db_connect.php';
 
 $key = $_POST["keyFile"];
-$dKey = "770A8A65DA156D24EE2A093277530142";
-
-// Connecting to the Database
-$servername = "mysql-29500-0.cloudclusters.net:29500/";
-$username = "root";
-$password = "testtest";
-$database="project_db";
-
-$conn = mysqli_connect($servername, $username, $password, $database);
-
-if (!$conn){
-    die("Sorry we failed to connect: ". mysqli_connect_error());
-}
 
 $sql="SELECT file_name FROM file_details where key_file='$key'";
 $result = mysqli_query($conn, $sql);
 $num=mysqli_num_rows($result);
-if($num==0 || $num>1){
+if($num==0 || $num>1)   {
     echo "Key does not exist.";
 }
-else{
+else    {
     $row=mysqli_fetch_assoc($result);
     $file_url = "uploads/".$row["file_name"];
     if(file_exists($file_url . ".enc")) {
