@@ -87,7 +87,7 @@ if($uploadOk != 0){
   }
 
   $filename = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
-  $datetime = date("Y-m-d H:i:s");
+  $datetime = time(); // date("Y-m-d H:i:s");
   do{
   $key = random_str(6);
   }while(!checkKey($key, $conn));
