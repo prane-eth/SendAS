@@ -13,6 +13,7 @@ if($num==0 || $num>1)   {
     echo "Key does not exist.";
 }
 else    {
+    $row=mysqli_fetch_assoc($result);
 
     // Check expiry
     $inserted_time = $row["file_name"];
@@ -22,7 +23,6 @@ else    {
         header('Location: expired.php');
     }
 
-    $row=mysqli_fetch_assoc($result);
     $file_url = "uploads/".$row["file_name"];
     if(file_exists($file_url . ".enc")) {
         //Decrypting file
