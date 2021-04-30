@@ -15,7 +15,7 @@ $uploadOk = 1;
 
 // Check if file already exists
 if (file_exists($target_file)) {
-  echo "Sorry, file already exists.";
+  // echo "Sorry, file already exists.";
   $uploadOk = 0;
 }
 
@@ -24,7 +24,7 @@ $sql="SELECT * FROM file_details where file_name='$fname'";
 $result = mysqli_query($conn, $sql);
 $num = mysqli_num_rows($result);
 if ($num) {
-  echo "Sorry, file already exists.";
+  // echo "Sorry, file already exists.";
   $uploadOk = 0;
 }
 

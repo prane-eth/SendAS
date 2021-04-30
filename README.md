@@ -13,6 +13,8 @@ Detects whether a request if from a real user or bot using HTTP User Agent.
 
 /uploads/ folder is protected from public by creating index.php which redirects the user to homepage.
 
+Input is validated to prevent cyber attacks like SQL-injection.
+
 
 Deployed to 
 [this link](http://cyberproj.totalh.net/)
