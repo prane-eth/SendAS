@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>SendAS</title>
+    <link rel="shortcut icon" href="Images/favicon.ico" />
+    <meta charset="utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+<body>
+  <center><div class="logo"></div></center>
+  <p style="font-size: 20px; text-align: center; color: purple;">Send files Anonymously and Securely</p>
 <?php
 
 if (isset($_SERVER['HTTP_USER_AGENT'])
@@ -12,40 +25,39 @@ include 'db_connect.php';
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-
+$he = "";
+$me = "";
+$hs = "";
+$ms = ""; 
 // Check if file already exists
-if (file_exists($target_file)) {
-  // echo "Sorry, file already exists.";
-  $uploadOk = 0;
-}
-
-$fname = $_FILES["fileToUpload"]["name"];
-$sql="SELECT * FROM file_details where file_name='$fname'";
-$result = mysqli_query($conn, $sql);
-$num = mysqli_num_rows($result);
-if ($num) {
-  // echo "Sorry, file already exists.";
+if (file_exists($target_file) or $uploadOk == 0) {
+  $he = "Sorry for the inconvenience.";
+  $me = "There's a problem in your file or can you please change the File name and try again.";
+  alert($me,$he);
   $uploadOk = 0;
 }
 
 // Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, a file with same already exists.";
-  // if everything is ok, try to upload file
-} else {
+ else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     //Encrypting file and decrypting it.
     encryptFile($target_file,$dKey);
+
     //deleting plain file
     unlink($target_file);
-    echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+
+    //Creating a message
+    $hs = "Thank You for using SendAS.";
+    $ms = "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
 
   } else {
-    echo "Sorry, there was an error uploading your file.";
+    $he = "Sorry for the inconvenience.";
+    $me = "There was an error uploading your file.";
+    alert($me,$he);
     $uploadOk =0;
   }
 }
-echo "<br>";
+
 // Random key generator
 function random_str(
   int $length = 64,
@@ -69,12 +81,29 @@ function insert_details(string $filename, string $datetime, string $key, object 
 
   // Check for the database creation success
   if(!$result){
-    echo "The insertion of the values failed because of this error ---> ". mysqli_error($conn);
+    $he = "Database Error";
+    $me = "The insertion of the values failed because of this error ---> ". mysqli_error($conn);
+    alert($me,$he);
     return false;
   }
   return true;
 }
-
+//Function to create a Alert Box
+function alert(string $msg, string $head){
+  //echo '<div class="modal" id="myModal" role="dialog">';
+  echo '<div class="modal-dialog" id="alertbox">';
+  echo '  <div class="modal-content">';
+  echo '    <div class="modal-header">';
+  echo '      <button type="button" class="close" data-dismiss="modal" onclick="location.href = \'/\';">&times;</button>';
+  echo '      <h4 class="modal-title">'.$head.'</h4>';
+  echo '    </div>';
+  echo '    <div class="modal-body">';
+  echo '      <p>'.$msg.'</p>';
+  echo '    </div>';
+  echo '    <div class="modal-footer">';
+  echo '      <button type="button" class="btn btn-default" style="background-color: purple;color: white;" data-dismiss="modal" onclick="location.href = \'/\';">Close</button>';
+  echo '        </div></div></div>';
+}
 // Function to check for duplicate key
 function checkKey(string $key, object $conn){
   $sql="SELECT * FROM file_details where key_file='$key'";
@@ -95,10 +124,11 @@ if($uploadOk != 0){
   }while(!checkKey($key, $conn));
 
   if(insert_details($filename, $datetime, $key, $conn)){
-    echo "<br>Your Key for the file: ".$key;
-    echo "<br> <a href='/download.php?key=$key'> Download link </a>";
+    $ms = $ms."<br>Your Key for the file: <span style='color: purple;'>".$key."</span><br>Copy the Link : <a href='/download.php?key=$key'> Download link </a>";
+    alert($ms, $hs);
   }
 }
-echo '<br><a href="index.html">Go back</a>';
-?>
 
+?>
+</body>
+</html>

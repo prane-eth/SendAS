@@ -52,7 +52,7 @@ h2{
     padding-left: 700px;
 }
 #submitbutton{
-    background-color: purple; /* Green */
+    background-color: purple;
     border: none;
     border-radius: 10px;
     color: rgb(253, 217, 54);
@@ -70,3 +70,6 @@ h2{
 #submitbutton:hover {
     box-shadow: 0 12px 16px 0 rgba(248, 248, 248, 0.24),0 17px 50px 0 rgba(247, 246, 243, 0.19);
   }
+#alertbox{
+    background-color: silver;
+}
