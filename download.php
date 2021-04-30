@@ -14,6 +14,13 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
 else
     $key = $_GET["key"];  // use link /download.php?key=a1b2c3 to download file
 
+// validate key to prevent attacks
+if (strlen($key)!=6)
+    die('Invalid key length <br><a href="index.html">Go back</a>');
+
+if(!ctype_alnum($key)) // if not alphanumeric
+    die('Invalid characters in key <br><a href="index.html">Go back</a>');
+
 
 $sql="SELECT * FROM file_details where key_file='$key'";
 $result = mysqli_query($conn, $sql);
