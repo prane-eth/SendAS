@@ -4,7 +4,12 @@
 include 'file_encryptor.php';
 include 'db_connect.php';
 
-$key = $_POST["keyFile"];
+if ($_SERVER["REQUEST_METHOD"]=="POST")
+    $key = $_POST["keyFile"];
+else
+    $key = $_GET["key"];  // use link /download.php?key=a1b2c3 to download file
+
+
 
 $sql="SELECT * FROM file_details where key_file='$key'";
 $result = mysqli_query($conn, $sql);
@@ -13,19 +18,18 @@ if($num==0 || $num>1)   {
     echo "Key does not exist.";
 }
 else    {
-
     // Check expiry
-    $row=mysqli_fetch_assoc($result);
+    $row = mysqli_fetch_assoc($result);
     $inserted_time = $row["inserted_time"];
-    $file_url = "uploads/".$row["file_name"];
-    if ($inserted_time - time() > 86400) {  // more than 24 hours
-        unlink($file_url);
-        echo 'File expired';
-        header('Location: expired.php');
+    $file_url = "uploads/" . $row["file_name"];
+    if (time() - $inserted_time > 86400) {  // 24 hours is 86400 - test using 15
+        // if more than 24 hours since upload, file is expired
+        unlink($file_url . ".enc");  // delete encrypted file
+        header('Location: expired.html');
     }
 
     if(file_exists($file_url . ".enc")) {
-        //Decrypting file
+        // Decrypting file
         decryptFile($file_url, $dKey);
 
         header('Content-Type: application/octet-stream');

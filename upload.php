@@ -82,6 +82,7 @@ if($uploadOk != 0){
 
   if(insert_details($filename, $datetime, $key, $conn)){
     echo "<br>Your Key for the file: ".$key;
+    echo "<br> <a href='/download.php?key=$key'> Download link </a>";
   }
 }
 echo '<br><a href="index.html">Go back</a>';
