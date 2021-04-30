@@ -9,14 +9,17 @@ File is encrypted after upload, and decrypted before download.
 
 File gets expired in 24 hours if not downloaded.
 
+Detects whether a request if from a real user or bot using HTTP User Agent.
+
+/uploads/ folder is protected from public by creating index.php which redirects the user to homepage.
+
 
 Deployed to 
 [this link](http://cyberproj.totalh.net/)
 
 
 To access database, use command
-
 ```
-mysql -h mysql-29585-0.cloudclusters.net -P 29585 -u root -ptesttest --database=project_db
+mysql -h mysql-29585-0.cloudclusters.net -P 29585 -u root -ptesttest  --database=project_db
 ```
 [PhpMyAdmin link](https://phpmyadmin-c006.cloudclusters.net/index.php)

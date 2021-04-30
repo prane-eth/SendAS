@@ -1,5 +1,10 @@
 <?php
 
+if (isset($_SERVER['HTTP_USER_AGENT'])
+        && preg_match('/bot|curl|wget|crawl|slurp|spider|mediapartners/i',
+        $_SERVER['HTTP_USER_AGENT']) )
+    die("Detected as a bot. This site is not for bots.");
+
 //Including the encryted php
 include 'file_encryptor.php';
 include 'db_connect.php';
