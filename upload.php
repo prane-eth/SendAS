@@ -15,12 +15,6 @@
             document.execCommand("copy");
           }
     </script>
-    <style>
-        #myInput    {
-            /* color: white; */
-            /* background-color: white; */
-        }
-    </style>
 <body>
   <center><div class="logo"></div></center>
   <p style="font-size: 20px; text-align: center; color: purple;">Send files Anonymously and Securely</p>
