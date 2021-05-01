@@ -71,7 +71,7 @@ if($uploadOk != 0){
   }while(!checkKey($key, $conn));
 
   if(insert_details($filename, $datetime, $key, $conn)){
-    $ms = $ms."<br>Your Key for the file: <span style='color: purple;'>".$key."</span><br>Copy the Link : <a href='/download.php?key=$key'> Download link </a>";
+    $ms = $ms."<br>Your Key for the file: <span style='color: purple;'>".$key."</span><br>Copy the Link : <a href='./download.php?key=$key'> Download link </a>";
     alert($ms, $hs);
   }
 }
