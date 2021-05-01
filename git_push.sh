@@ -1,11 +1,6 @@
 #!/bin/bash
-message="$1"
-
-if [ -z "$message" ]
-then
-	message='Edited files'
-fi
+msg=${1:-'Edited files'} # default value for commit message
 
 git add .
-git commit -m "$message"
+git commit -m "$msg"
 git push

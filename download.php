@@ -1,20 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>SendFAST</title>
+    <link rel="shortcut icon" href="Images/favicon.ico" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+<body>
+  <center><div class="logo"></div></center>
+  <p style="font-size: 20px; text-align: center; color: purple;">Send files Anonymously and Securely</p>
+
 <?php
-
-//including html
-echo '<!DOCTYPE html>';
-echo '<html lang="en">';
-echo '    <title>SendAS</title>';
-echo '    <link rel="shortcut icon" href="Images/favicon.ico" />';
-echo '    <meta charset="utf-8">';
-echo '    <meta name="viewport" content="width=device-width, initial-scale=1">';
-echo '    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">';
-echo '    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
-echo '    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>';
-echo '    <link rel="stylesheet" href="style.css">';
-echo '<body>';
-echo '  <center><div class="logo"></div></center>';
-echo '  <p style="font-size: 20px; text-align: center; color: purple;">Send files Anonymously and Securely</p>';
-
 //destroying bots
 if (isset($_SERVER['HTTP_USER_AGENT'])
         && preg_match('/bot|curl|wget|crawl|slurp|spider|mediapartners/i',
@@ -34,6 +32,13 @@ if ($_SERVER["REQUEST_METHOD"]=="POST")
     $key = $_POST["keyFile"];
 else
     $key = $_GET["key"];  // use link /download.php?key=a1b2c3 to download file
+
+
+// validate key to prevent attacks
+if (strlen($key)!=6)
+    die('Invalid key length <br><a href="index.html">Go back</a>');
+if(!ctype_alnum($key)) // if not alphanumeric
+    die('Invalid characters in key <br><a href="index.html">Go back</a>');
 
 
 $sql="SELECT * FROM file_details where key_file='$key'";
@@ -69,7 +74,7 @@ else    {
         unlink($file_url);
         unlink($temp);
 
-        $hs = "Thank You for using SendAS.";
+        $hs = "Thank You for using SendFAST.";
         $ms = "Your file ". $row['file_name']. " is downloading.";
         alert($ms, $hs);
 
@@ -108,7 +113,7 @@ function alert(string $msg, string $head){
     echo '      <button type="button" class="btn btn-default" style="background-color: white; color: purple;" data-dismiss="modal" onclick="location.href = \'/\';">Close</button>';
     echo '        </div></div></div>';
   }
-
-  echo '  </body>';
-  echo ' </html>';
 ?>
+
+</body>
+</html>

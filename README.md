@@ -15,6 +15,8 @@ Detects whether a request if from a real user or bot using HTTP User Agent.
 
 Input is validated to prevent cyber attacks like SQL-injection.
 
+Files are encrypted using AES-128-CBC algorithm before getting stored in the server.
+
 
 Deployed to 
 [this link](http://cyberproj.totalh.net/)

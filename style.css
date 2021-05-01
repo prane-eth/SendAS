@@ -7,7 +7,7 @@ body{
     background-repeat: no-repeat;
 }
 .logo{
-    background-image: url("Images/logo.jpeg");
+    background-image: url("Images/logo.png");
     background-repeat: no-repeat;
     background-size:cover;
     width: 150px;
