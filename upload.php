@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>SendFAST</title>
+    <title>SendAS</title>
     <link rel="shortcut icon" href="Images/favicon.ico" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,6 +8,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script>
+          function copyText() {
+            // copy random password after button click
+            myInput.select();
+            document.execCommand("copy");
+          }
+    </script>
+    <style>
+        #myInput    {
+            //color: white;
+            //background-color: white;
+        }
+    </style>
 <body>
   <center><div class="logo"></div></center>
   <p style="font-size: 20px; text-align: center; color: purple;">Send files Anonymously and Securely</p>
@@ -68,7 +81,12 @@ if($uploadOk != 0){
   $datetime = time();
 
   if(insert_details($filename, $datetime, $key, $conn)){
-    $ms = $ms."<br>Your Key for the file: <span style='color: purple;'>".$key."</span><br>Copy the Link : <a href='./download.php?key=$key'> Download link </a>";
+    $ms .= "<br> Your Key for the file: <span style='color: purple;'> $key </span>";
+    $ms .= "<br> <a id='downLink' href='./download.php?key=$key'> Download link </a>";
+
+    $folder_url = 'http://'.$_SERVER['HTTP_HOST'].str_replace($_SERVER['DOCUMENT_ROOT'], '', realpath(__DIR__));  // php get url of current folder
+    $ms .= "<input id='myInput' value='$folder_url/download.php?key=$key'>";  //  visible='false' hidden='true'
+    $ms .= '<button type="submit" onclick="copyText()" class="btn btn-success btn-lg">Copy Link</button>';
     alert($ms, $hs);
   }
 }
