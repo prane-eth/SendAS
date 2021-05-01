@@ -17,10 +17,7 @@
 include 'functions.php';
 
 session_start();
-$h = $_SESSION['h'];
-$m = $_SESSION['m'];
-alert($m, $h);
+// $_SESSION['he'] = $he;
+// $_SESSION['he'] = $me;
+alert($_SESSION['he'], $_SESSION['me']);
 ?>
-
-</body>
-</html>
