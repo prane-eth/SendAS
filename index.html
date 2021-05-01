@@ -14,7 +14,7 @@
   <div class="container-fluid box">
     <form action="upload.php" method="post" enctype="multipart/form-data">
       <h2>Upload: </h2>
-      <label for="fileToUpload" style="font-size: 20px;">Select file to upload:</label> 
+      <label for="fileToUpload"">Select file to upload:</label> 
       <input type="file" name="fileToUpload" id="fileToUpload"><br>
       <input type="submit" value="Send" name="submit" id="submitbutton" style="color: white;">
     </form>
@@ -24,7 +24,7 @@
     <div class="container-fluid box2">
       <form action="download.php" method="post">
         <h2>Download: </h2>
-        <label for="keyFile" style="font-size: 20px;">Enter the key for the file: </label> 
+        <label for="keyFile"">Enter the key for the file: </label> 
         <input type="text" name="keyFile" id="keyFile" required="true" maxlength="6"><br><br>
         <input type="submit" value="Receive" name="submit" id="submitbutton" style="color: white;">
       </form>
