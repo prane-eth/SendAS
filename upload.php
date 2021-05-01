@@ -17,8 +17,8 @@
     </script>
     <style>
         #myInput    {
-            //color: white;
-            //background-color: white;
+            /* color: white; */
+            /* background-color: white; */
         }
     </style>
 <body>
