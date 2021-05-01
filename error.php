@@ -17,7 +17,7 @@
 include 'functions.php';
 
 session_start();
-$_SESSION['he'] = $he;
-$_SESSION['me'] = $me;
-alert($me, $he);
+// $_SESSION['he'] = $he;
+// $_SESSION['he'] = $me;
+alert($_SESSION['he'], $_SESSION['me']);
 ?>

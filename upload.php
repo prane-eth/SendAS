@@ -74,6 +74,7 @@ if($uploadOk != 0){
     alertToPage($ms, $hs);
   }
 }
+
 ?>
 </body>
 </html>
