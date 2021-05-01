@@ -19,11 +19,4 @@ Files are encrypted using AES-128-CBC algorithm before getting stored in the ser
 
 
 Deployed to 
-[this link](http://cyberproj.totalh.net/)
-
-
-To access database, use command
-```
-mysql -h mysql-29585-0.cloudclusters.net -P 29585 -u root -ptesttest  --database=project_db
-```
-[PhpMyAdmin link](https://phpmyadmin-c006.cloudclusters.net/index.php)
+[this link](http://sendas.totalh.net/)

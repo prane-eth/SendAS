@@ -1,9 +1,5 @@
 <?php
 
-/* To use in other file - include 'file_encryptor.php'; */
-
-
-// referred https://riptutorial.com/php/example/25499/symmetric-encryption-and-decryption-of-large-files-with-openssl
 define('FILE_ENCRYPTION_BLOCKS', 10000);
 
 function encryptFile($filename, $key1="")   {
@@ -69,13 +65,6 @@ function decryptFile($filename, $key1="")   {
     return $error ? false : $dest;
 }
 
-$dKey = "770A8A65DA156D24EE2A093277530142";
-
-// to test, uncomment any of these
-//encryptFile("testing_file.pdf", $dKey);
-//decryptFile("testing_file.pdf", $dKey);
-
-//encryptFile("log.txt", $dKey);
-//decryptFile("log.txt", $dKey);
+// $dKey = "770A8A65DA156D24EE2A093277530142";
 
 ?>
