@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>SendFAST</title>
+    <title>SendAS</title>
     <link rel="shortcut icon" href="Images/favicon.ico" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
