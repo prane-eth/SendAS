@@ -1,8 +1,9 @@
 <?php
 function alertToPage($me, $he)  {
     session_start();
-    $_SESSION['he'] = $he;
-    $_SESSION['me'] = $me;
+    // store error in session
+    $_SESSION['h'] = $he;
+    $_SESSION['m'] = $me;
     header('Location: error.php');
 }
 

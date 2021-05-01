@@ -14,6 +14,7 @@
 
 
 <?php
+
 if (isset($_SERVER['HTTP_USER_AGENT'])
         && preg_match('/bot|curl|wget|crawl|slurp|spider|mediapartners/i',
         $_SERVER['HTTP_USER_AGENT']) )
@@ -35,7 +36,7 @@ $ms = "";
 if (file_exists($target_file) or $uploadOk == 0) {
   $he = "Sorry for the inconvenience.";
   $me = "There's a problem in your file or can you please change the File name and try again.";
-  alertToPage($me,$he);
+  alert($me,$he);
   $uploadOk = 0;
 }
 
@@ -49,13 +50,13 @@ if (file_exists($target_file) or $uploadOk == 0) {
     unlink($target_file);
 
     //Creating a message
-    $hs = "Thank You for using SendFAST.";
+    $hs = "Thank You for using SendAS.";
     $ms = "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
 
   } else {
     $he = "Sorry for the inconvenience.";
     $me = "There was an error uploading your file.";
-    alertToPage($me,$he);
+    alert($me,$he);
     $uploadOk =0;
   }
 }
@@ -71,9 +72,10 @@ if($uploadOk != 0){
 
   if(insert_details($filename, $datetime, $key, $conn)){
     $ms = $ms."<br>Your Key for the file: <span style='color: purple;'>".$key."</span><br>Copy the Link : <a href='/download.php?key=$key'> Download link </a>";
-    alertToPage($ms, $hs);
+    alert($ms, $hs);
   }
 }
 ?>
+
 </body>
 </html>

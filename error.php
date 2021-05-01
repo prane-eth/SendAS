@@ -17,7 +17,10 @@
 include 'functions.php';
 
 session_start();
-$_SESSION['he'] = $he;
-$_SESSION['me'] = $me;
-alert($me, $he);
+$h = $_SESSION['h'];
+$m = $_SESSION['m'];
+alert($m, $h);
 ?>
+
+</body>
+</html>
