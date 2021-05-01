@@ -25,8 +25,7 @@ include 'file_encryptor.php';
 include 'db_connect.php';
 include 'functions.php';
 
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$target_file = "uploads/" . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 $he = "";
 $me = "";
@@ -43,8 +42,14 @@ if (file_exists($target_file) or $uploadOk == 0) {
 // Check if $uploadOk is set to 0 by an error
  else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+
+
+    do{
+      $key = random_str(6);
+    }while(!checkKey($key, $conn));
+
     //Encrypting file and decrypting it.
-    encryptFile($target_file,$dKey);
+    encryptFile($target_file, $key);
 
     //deleting plain file
     unlink($target_file);
@@ -66,9 +71,6 @@ if($uploadOk != 0){
 
   $filename = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
   $datetime = time();
-  do{
-  $key = random_str(6);
-  }while(!checkKey($key, $conn));
 
   if(insert_details($filename, $datetime, $key, $conn)){
     $ms = $ms."<br>Your Key for the file: <span style='color: purple;'>".$key."</span><br>Copy the Link : <a href='./download.php?key=$key'> Download link </a>";

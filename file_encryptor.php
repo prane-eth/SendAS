@@ -10,7 +10,7 @@ function encryptFile($filename, $key1="")   {
     $dKey = "770A8A65DA156D24EE2A093277530142".$key1;
 
     $source = $filename;
-    $dest = $filename . ".enc";
+    $dest = $filename . ".enc" . $key1;
     $dKey = substr(sha1($dKey, true), 0, 16);
     $iv = openssl_random_pseudo_bytes(16);
 
@@ -41,7 +41,7 @@ function encryptFile($filename, $key1="")   {
 function decryptFile($filename, $key1="")   {
     $dKey = "770A8A65DA156D24EE2A093277530142".$key1;
 
-    $source = $filename . ".enc";
+    $source = $filename . ".enc" . $key1;
     $dest = $filename;
     $dKey = substr(sha1($dKey, true), 0, 16);
 

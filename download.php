@@ -16,7 +16,7 @@ $hs = "";
 $ms = ""; 
 
 if ($_SERVER["REQUEST_METHOD"]=="POST")
-    $key = $_POST["keyFile"];
+    $key = $_POST["keyFile"];  // file key
 else
     $key = $_GET["key"];  // use link /download.php?key=a1b2c3 to download file
 
@@ -36,13 +36,13 @@ else    {
     $file_url = "uploads/" . $row["file_name"];
     if (time() - $inserted_time > 86400) {  // 24 hours is 86400 - test using 15
         // if more than 24 hours since upload, file is expired
-        unlink($file_url . ".enc");  // delete encrypted file
+        unlink($file_url . ".enc" . $key);  // delete encrypted file
         header('Location: expired.html');
     }
 
-    if(file_exists($file_url . ".enc")) {
+    if(file_exists($file_url . ".enc" . $key)) {
         // Decrypting file
-        decryptFile($file_url, $dKey);
+        decryptFile($file_url, $key);
 
         header('Content-Type: application/octet-stream');
         header("Content-Transfer-Encoding: Binary"); 
@@ -50,7 +50,7 @@ else    {
         readfile($file_url);
 
         //deleting encryted file and plain text file
-        $temp = $file_url . ".enc";
+        $temp = $file_url . ".enc" . $key;
         unlink($file_url);
         unlink($temp);
 
