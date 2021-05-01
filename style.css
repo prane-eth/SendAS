@@ -33,6 +33,7 @@ h2 {
   padding: 2rem;
   align-items: center;
   min-width: 230px;
+  max-width: 400px;
 }
 .box2 {
   border: 2px solid rgba(36, 204, 64, 0.493);
@@ -43,9 +44,10 @@ h2 {
   padding: 2rem;
   align-items: center;
   min-width: 230px;
+  max-width: 400px;
 }
 .pad {
-  padding-left: 50vw;
+  padding-left: 45vw;
 }
 #submitbutton {
   background-color: purple;
