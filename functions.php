@@ -37,6 +37,8 @@ function random_str(
     }
     return true;
   }
+
+  
   //Function to create a Alert Box
   function alert(string $msg, string $head){
     //echo '<div class="modal" id="myModal" role="dialog">';

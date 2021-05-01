@@ -38,12 +38,8 @@ if (file_exists($target_file) or $uploadOk == 0) {
   alert($me,$he);
   $uploadOk = 0;
 }
-
-// Check if $uploadOk is set to 0 by an error
- else {
+else {  // Check if $uploadOk is set to 0 by an error
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-
-
     do{
       $key = random_str(6);
     }while(!checkKey($key, $conn));
@@ -68,7 +64,6 @@ if (file_exists($target_file) or $uploadOk == 0) {
 
 // Update database if the file was uploaded successfully
 if($uploadOk != 0){
-
   $filename = htmlspecialchars( basename( $_FILES["fileToUpload"]["name"]));
   $datetime = time();
 
@@ -77,7 +72,6 @@ if($uploadOk != 0){
     alert($ms, $hs);
   }
 }
-
 ?>
 
 </body>
