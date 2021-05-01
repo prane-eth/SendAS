@@ -13,5 +13,5 @@ Solution is to redirect to previous page
 ?>
 
 <script>
-    window.location.href='/';  // redirect to homepage
+    window.location.href='index.html';  // redirect to homepage
 </script>

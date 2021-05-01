@@ -1,20 +1,5 @@
 <?php
 
-//including html
-echo '<!DOCTYPE html>';
-echo '<html lang="en">';
-echo '    <title>SendAS</title>';
-echo '    <link rel="shortcut icon" href="Images/favicon.ico" />';
-echo '    <meta charset="utf-8">';
-echo '    <meta name="viewport" content="width=device-width, initial-scale=1">';
-echo '    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">';
-echo '    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
-echo '    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>';
-echo '    <link rel="stylesheet" href="style.css">';
-echo '<body>';
-echo '  <center><div class="logo"></div></center>';
-echo '  <p style="font-size: 20px; text-align: center; color: purple;">Send files Anonymously and Securely</p>';
-
 //destroying bots
 if (isset($_SERVER['HTTP_USER_AGENT'])
         && preg_match('/bot|curl|wget|crawl|slurp|spider|mediapartners/i',
@@ -71,7 +56,7 @@ else    {
 
         $hs = "Thank You for using SendAS.";
         $ms = "Your file ". $row['file_name']. " is downloading.";
-        alert($ms, $hs);
+        //alert($ms, $hs);  // dont alert
 
         //deleting from database
         $sql="DELETE FROM file_details where key_file='$key'" ;
@@ -81,8 +66,6 @@ else    {
             $me = "Deletion in the database is unsuccessful ---> ". mysqli_error($conn);
             alert($me,$he);
         }
-
-        
         //die();
     }
     else{
@@ -94,21 +77,34 @@ else    {
 }
 //Function to create a Alert Box
 function alert(string $msg, string $head){
+    echo '<!DOCTYPE html>';
+    echo '<html lang="en">';
+    echo '    <title>SendAS</title>';
+    echo '    <link rel="shortcut icon" href="Images/favicon.ico" />';
+    echo '    <meta charset="utf-8">';
+    echo '    <meta name="viewport" content="width=device-width, initial-scale=1">';
+    echo '    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">';
+    echo '    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>';
+    echo '    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>';
+    echo '    <link rel="stylesheet" href="style.css">';
+    echo '<body>';
+    echo '  <center><div class="logo"></div></center>';
+    echo '  <p style="font-size: 20px; text-align: center; color: purple;">Send files Anonymously and Securely</p>';
     //echo '<div class="modal" id="myModal" role="dialog">';
     echo '<div class="modal-dialog" id="alertbox">';
     echo '  <div class="modal-content">';
     echo '    <div class="modal-header">';
-    echo '      <button type="button" class="close" data-dismiss="modal" onclick="location.href = \'/\';">&times;</button>';
+    echo '      <button type="button" class="close" data-dismiss="modal" onclick="location.href = \'index.html\';">&times;</button>';
     echo '      <h4 class="modal-title">'.$head.'</h4>';
     echo '    </div>';
     echo '    <div class="modal-body">';
     echo '      <p>'.$msg.'</p>';
     echo '    </div>';
     echo '    <div class="modal-footer">';
-    echo '      <button type="button" class="btn btn-default" style="background-color: white; color: purple;" data-dismiss="modal" onclick="location.href = \'/\';">Close</button>';
+    echo '      <button type="button" class="btn btn-default" style="background-color: white; color: purple;" data-dismiss="modal" onclick="location.href = \'index.html\';">Close</button>';
     echo '        </div></div></div>';
+    echo '  </body>';
+    echo ' </html>';
   }
 
-  echo '  </body>';
-  echo ' </html>';
 ?>
