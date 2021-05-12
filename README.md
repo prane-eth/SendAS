@@ -1,5 +1,7 @@
 # CyberSec_Project
-This contains the Cybersecurity project
+This contains the Cybersecurity project which is a part of a Hackathon.
+
+This project won 3rd rank (2nd runner up) in the Hackathon Tech Eden.
 
 The user uploads a file. It generates a download code along with a download link.
 
