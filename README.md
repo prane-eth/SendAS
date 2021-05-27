@@ -1,7 +1,7 @@
 # CyberSec_Project
 This contains the Cybersecurity project which is a part of a Hackathon.
 
-This project won 3rd rank (2nd runner up) in the Hackathon Tech Eden.
+This project won 3rd rank in the Hackathon Tech Eden.
 
 [Devfolio Link](https://devfolio.co/submissions/sendas-d94a)
 
