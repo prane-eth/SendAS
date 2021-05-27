@@ -5,6 +5,9 @@ This project won 3rd rank (2nd runner up) in the Hackathon Tech Eden.
 
 [Devfolio Link](https://devfolio.co/submissions/sendas-d94a)
 
+Deployed to 
+[this link](http://sendas.totalh.net/)
+
 The user uploads a file. It generates a download code along with a download link.
 
 User shares the code or link with a friend who will download the uploaded file.
@@ -20,7 +23,3 @@ Detects whether a request if from a real user or bot using HTTP User Agent.
 Input is validated to prevent cyber attacks like SQL-injection.
 
 Files are encrypted using AES-128-CBC algorithm before getting stored in the server.
-
-
-Deployed to 
-[this link](http://sendas.totalh.net/)
