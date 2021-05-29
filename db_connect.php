@@ -30,5 +30,15 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 mysqli_close($conn);*/
+/*
+
+to show code used to create table, SHOW CREATE TABLE file_details
+
+CREATE TABLE file_details (
+    file_name varchar(150) DEFAULT NULL,
+    key_file varchar(150) NOT NULL PRIMARY KEY,
+    inserted_time bigint DEFAULT NULL
+)
+*/
 
 ?>
