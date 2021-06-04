@@ -1,4 +1,4 @@
-# CyberSec_Project
+# SendAS
 This contains the Cybersecurity project which is a part of a Hackathon.
 
 This project won 3rd rank in the Hackathon Tech Eden.
